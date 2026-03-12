@@ -9,7 +9,7 @@ on:
     tags-ignore: ['**']
     paths-ignore:
       - 'README.md'
-      - '.github/**'
+
   workflow_dispatch: {}
 
 concurrency:
