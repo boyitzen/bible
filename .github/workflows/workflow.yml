@@ -1,19 +1,39 @@
-jobs:
-  generate-index:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: gacts/directory-listing@v1
-        with:
-          target: ./assets
-          # target: .
-          # ignore: |
-          #   build/**
-          #   **/index.html
-          #   node_modules/**,**/*.log
-          # show-hidden: true
-          # overwrite: true
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+# docs: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions
 
+name: 🚀 Demo
+
+on:
+  push:
+    branches: [master, main]
+    tags-ignore: ['**']
+  workflow_dispatch: {}
+
+concurrency:
+  group: ${{ github.ref }}-deploy
+  cancel-in-progress: true
+
+env: {FORCE_COLOR: 'true'}
+
+jobs:
+  demo:
+    name: Generate files and update the demo (GitHub Pages)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - name: Run this action
+        uses: ./
+        with:
+          target: .
+          ignore: '**/generator.js'
+          show-hidden: true
+          overwrite: false
+      - run: find . -type f -name index.html -exec ls -l "{}" \;
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./assets
+          destination_dir: demo
+          exclude_assets: ''
+          publish_dir: .
