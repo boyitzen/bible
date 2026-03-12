@@ -37,3 +37,11 @@ jobs:
           exclude_assets: '.github,dist,action.yaml,README.md'
           publish_dir: .
           publish_branch: release
+      - uses: actions/deploy-pages@v4
+        with:
+          token: ***
+          timeout: 600000
+          error_count: 10
+          reporting_interval: 5000
+          artifact_name: github-pages
+          preview: false
