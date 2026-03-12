@@ -8,9 +8,9 @@ on:
     branches: main
     tags-ignore: ['**']
     paths-ignore:
-      - 'README.md'
-      - '**/*.yaml'
-      - '**/*.js'
+      - '**/README.md'
+      - '.github/**'
+      - 'dist/**'
   workflow_dispatch: {}
 
 concurrency:
