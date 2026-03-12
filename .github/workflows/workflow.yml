@@ -36,4 +36,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           exclude_assets: ''
           publish_dir: .
-          publish_branch: main
+          publish_branch: release
