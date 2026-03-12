@@ -37,3 +37,8 @@ jobs:
           exclude_assets: '.github,dist,action.yaml,README.md'
           publish_dir: .
           publish_branch: release
+      - name: Purge Cloudflare Cache
+        uses: jakejarvis/cloudflare-purge-cache@v1.2.0
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }} # Secret containing your Cloudflare API token
+          zoneId: ${{ secrets.CLOUDFLARE_ZONE_ID }}
