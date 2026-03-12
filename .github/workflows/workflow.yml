@@ -37,8 +37,3 @@ jobs:
           exclude_assets: '.github,dist,action.yaml,README.md'
           publish_dir: .
           publish_branch: release
-      - name: Clear all GitHub action caches
-        run: |
-          gh cache delete --all --repo bible
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACTION_CLEAR_CACHES_TOKEN }}
