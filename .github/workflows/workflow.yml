@@ -31,7 +31,7 @@ jobs:
           show-hidden: true
           overwrite: false
       - run: find . -type f -name index.html -exec ls -l "{}" \;
-      - uses: peaceiris/actions-gh-pages@v4
+      - uses: peaceiris/actions-main@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           destination_dir: demo
