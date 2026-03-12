@@ -34,7 +34,7 @@ jobs:
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          destination_dir: pages
+          publish_dir: ./public
           exclude_assets: '.github,dist,action.yaml,README.md'
           publish_dir: .
           publish_branch: release
