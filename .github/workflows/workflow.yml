@@ -5,7 +5,7 @@ name: dir-listing
 
 on:
   push:
-    branches: [master, main]
+    branches: [main]
     tags-ignore: ['**']
   workflow_dispatch: {}
 
@@ -31,9 +31,9 @@ jobs:
           show-hidden: true
           overwrite: false
       - run: find . -type f -name index.html -exec ls -l "{}" \;
-      - uses: peaceiris/actions-main@v4
+      - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          destination_dir: demo
+          destination_dir: release
           exclude_assets: ''
           publish_dir: .
