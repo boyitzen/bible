@@ -1,1 +1,24 @@
+https://blog.miniasp.com/post/2024/03/07/Useful-tool-yt-dlp
+
+# download and concatenate all descriptions to a file
+yt-dlp --parse-metadata "title:.+活潑的生命 (?P<temp>.*)$" --parse-metadata "temp:%(temp)s" --output "%(temp)s" --print "****** %(temp)s" --print description --skip-download "https://www.youtube.com/playlist?list=PLtNpndO-2VOR0UBNHhMKkr3F_XJS2Ty7e" > xxxx.txt
+
+# download mp3
+yt-dlp --parse-metadata "title:.+活潑的生命 (?P<temp>.*)$" --parse-metadata "temp:%(temp)s" --output "%(temp)s" --embed-thumbnail --extract-audio -f bestaudio -x --audio-format mp3 --skip-download "https://www.youtube.com/playlist?list=PLtNpndO-2VOR0UBNHhMKkr3F_XJS2Ty7e"
+
+#下載影片的特定部分 (裁剪影片)（例如前 90 秒）
+yt-dlp --downloader ffmpeg --downloader-args "-ss 00:00:00 -to 00:01:30" <url>
+
+#從文字檔案中批次下載多個影片
+yt-dlp -a file.txt
+
+yt-dlp --output "%(playlist)s/%(title)s.%(ext)s" --embed-thumbnail --add-metadata --merge-output-format mp4 "https://www.youtube.com/playlist?list=PLgFC_SXvt6Lmkks32yM_6l-Eb6KMdgBom"
+
+yt-dlp --output "%(playlist)s/%(title)s.%(ext)s" --write-auto-subs --write-sub -skip-download "https://www.youtube.com/playlist?list=PLtNpndO-2VOR0UBNHhMKkr3F_XJS2Ty7e"
+
+yt-dlp --write-sub --convert-subs srt --skip-download "https://www.youtube.com/playlist?list=PLtNpndO-2VOR0UBNHhMKkr3F_XJS2Ty7e"
+
+yt-dlp --skip-download --write-description --parse-metadata "title:.+活潑的生命 (?P<temp>.*)$" --parse-metadata "temp:%(temp)s" --print-to-file title "%(temp)s" --output "%(temp)s"  "https://www.youtube.com/playlist?list=PLF-7aIPLekwWTCZNGtd4eWcen3E4It9HJ"
+
+yt-dlp --output "%(playlist)s/%(title)s.%(ext)s" --embed-thumbnail --add-metadata --extract-audio --audio-format mp3 --audio-quality 320K "https://www.youtube.com/playlist?list=PLu6L9FuV-VP21jo9bHgVRNV4TQBG66mpo"
 
